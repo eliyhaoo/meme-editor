@@ -1,0 +1,35 @@
+* {
+    box-sizing: content-box;
+}
+html {
+    font-family: monster, sans-serif;
+    color: var(--clr3)
+}
+
+body {
+    margin:0;
+    font-size: 1.5rem;
+    background-color: rgb(246, 249, 255);
+    
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr2);
+    transition: box-shadow 0.5s
+    
+}
+
+a:hover {
+    color: var(--clr3);
+    box-shadow: inset 0px -5px 0;
+}
+
+
+
+.main-container {
+ 
+    background-color: rgb(70, 72, 77);
+    border: lightgray 2px solid
+}
+

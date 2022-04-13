@@ -16,7 +16,7 @@ function onInit() {
 function renderGallery(){
     const elContainer = document.querySelector(".gallery-container")
     const imgsSTR = gImgs.map(img => `
-    <img onclick="onImgSelect('${img.id}')" src="meme-imgs/${img.id}.jpg" alt="img-${img.id}">`)
+    <img onclick="onImgSelect('${img.id}')" src="/css/meme-imgs/${img.id}.jpg" alt="img-${img.id}">`)
    elContainer.innerHTML = imgsSTR.join('')
 
 
@@ -44,7 +44,7 @@ function closeGallery(){
     document.querySelector('.main-gallery').hidden = true
 }
 function openEditor(){
-    document.querySelector('.meme-editor').hidden= false
+    document.querySelector('.meme-editor').style.display = 'flex'
 }
 function closeEditor(){
     document.querySelector('.meme-editor').hidden= true

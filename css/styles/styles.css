@@ -1,0 +1,22 @@
+/* SETUP */
+
+@import url('setup/vars.css');
+@import url('setup/typography.css');
+
+/* BASE */
+
+@import url('basic/base.css');
+@import url('basic/helpers.css');
+@import url('basic/layout.css');
+
+/* COMPONNETS */
+@import url('components/main-footer.css');
+@import url('components/main-header.css');
+@import url('components/gallery.css');
+@import url('components/memes.css');
+@import url('components/search-bar.css');
+@import url('components/user-intaraction.css');
+
+/* MQ */
+@import url('mq/mq.css')
+

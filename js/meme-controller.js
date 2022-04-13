@@ -22,6 +22,17 @@ function onTextInput(txt) {
   renderMeme();
 }
 
+function onDeleteLine(){
+    deleteLine()
+    renderMeme()
+}
+
+function onAddLine(){
+    addLine()
+    renderMeme()
+
+}
+
 function onChangeColor(val) {
   console.log("val", val);
   setColor(val);
@@ -63,17 +74,17 @@ function drawRect(x, y, size) {
   gCtx.stroke();
 }
 
-function drawImgFromLocal(meme, idx = 0) {
+function drawImgFromLocal(meme) {
   const { lines, selectedImgId } = meme;
   let img = new Image();
-  img.src = `meme-imgs/${selectedImgId}.jpg`;
+  img.src = `/css/meme-imgs/${selectedImgId}.jpg`;
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
     console.log("lines", lines);
-    let count = 0;
+
     lines.map((line, idx) => {
       const { txt, size, align, color, isSelected } = line;
-      const height = idx === 0 ? size : gElCanvas.height - size;
+      const height = idx === 0 ? size : idx === 1 ?gElCanvas.height - size : gElCanvas.height/2
 
       drawText(gElCanvas.width / 2, height, txt, size, align, color);
       // drawText(gElCanvas.width/2,size,txt,size,align,color)
@@ -81,12 +92,18 @@ function drawImgFromLocal(meme, idx = 0) {
       //    drawRect(size / 2, gElCanvas.height -size*1.5 , size);
 
       if (isSelected) {
+          console.log('enter selected ');
         switch (meme.selectedLineIdx) {
           case 0:
             drawRect(size / 2, size / 2, size);
             break;
           case 1:
             drawRect(size / 2, gElCanvas.height - size * 1.5, size);
+            break;
+          case 2:
+            console.log('enter caseselected ');
+
+            drawRect(size / 2, gElCanvas.height/2 -0.5*size, size);
             break;
         }
       }
@@ -104,4 +121,11 @@ function resizeCanvas() {
   // const elContainer = document.querySelector('.canvas-container')
   // gElCanvas.width = elContainer.offsetWidth -10
   // gElCanvas.height = elContainer.offsetHeight -10
+}
+
+function onDownloadCanvas(elLink){
+     
+    const data = gElCanvas.toDataURL()
+    elLink.hrf = data
+    elLink.download = 'myCanvas.png'
 }

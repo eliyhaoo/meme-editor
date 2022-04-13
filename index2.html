@@ -4,48 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/main.css"> -->
+    <link rel="stylesheet" href="css/styles/styles.css">
     <title>meme-project</title>
 </head>
 <body onload="onInit()">
-<div class="main-container main-layout">
+<main class="main-container main-layout">
 
-    <header class="main-header flex space-between">
-        <div class="logo">Logo</div>
-        <nav class="main-nav">
-            <a href="#" onclick="onOpenGallery()" class="nav-item ">Gallery</a>
-            <a href="#" onclick="onOpenMemes()" class="nav-item">Memes</a>
-        </nav>
+    <header class="main-header flex space-between ">
+        <div class="logo"><img src="/css/LOGO/LOGO.png" alt=""></div>
+        <ul class="main-nav clean-list flex">
+          <li><a href="#" onclick="onOpenGallery()" class="nav-item ">Gallery</a></li>
+         
+          <li><a href="#" onclick="onOpenMemes()" class="nav-item">Memes</a></li>  
+             
+            
+        </ul>
     </header>
+
+    <div class="search-bar flex space-between">
+        <input type="text" name="search" placeholder="SEARCH">
+        <div class="word-container">simple really it is YES Whatever...</div>
+    </div>
     
     <section class="main-gallery" id="gallery">
-        <div class="search-bar">
-            <input type="text" name="search" placeholder="SEARCH">
-        </div>
         <div class="gallery-container">
-            <!-- <img onclick="" src="meme-imgs/1.jpg" alt="">
-            <img src="meme-imgs/2.jpg" alt="">
-            <img src="meme-imgs/3.jpg" alt="">
-            <img src="meme-imgs/4.jpg" alt="">
-            <img src="meme-imgs/5.jpg" alt="">
-            <img src="meme-imgs/6.jpg" alt="">
-            <img src="meme-imgs/7.jpg" alt="">
-            <img src="meme-imgs/8.jpg" alt="">
-            <img src="meme-imgs/9.jpg" alt="">
-            <img src="meme-imgs/10.jpg" alt="">
-            <img src="meme-imgs/11.jpg" alt="">
-            <img src="meme-imgs/12.jpg" alt="">
-            <img src="meme-imgs/13.jpg" alt="">
-            <img src="meme-imgs/14.jpg" alt="">
-            <img src="meme-imgs/15.jpg" alt="">
-            <img src="meme-imgs/16.jpg" alt="">
-            <img src="meme-imgs/17.jpg" alt="">
-            <img src="meme-imgs/18.jpg" alt=""> -->   
+                <!-- pictures are rendered here -->
+        </div>
+
+        <div class="info">
+            picture and stuff come here
         </div>
     </section>
     
     
-    <section id="editor" hidden class="meme-editor flex" >
+    <section id="editor" hidden class="meme-editor" >
         
         <div class="canvas-container">
            
@@ -58,12 +51,22 @@
             <button onclick="onFontSizeChange('10')" class="font-size-up">+</button>
             <button onclick="onFontSizeChange('-10')" class="font-size-down">-</button>
             <button onclick="onSwitchLines()" name="switch">Switch</button>
+            <button onclick="onDeleteLine()" name="delete">Delete</button>
+            <button onclick="onAddLine()" name="add">Add</button>
+            <a href="#" class="btn" onclick="onDownloadCanvas(this)" download="">Download</a>
+            <!-- <button onclick="onMoveLine('1')" name="move-up">Switch</button> -->
+            <!-- <button onclick="onMoveLine('-1')" name="move-down">Switch</button> -->
         </div>
-
         
+     
+         
     </section>
+
+    <footer>
+        Footer here
+    </footer>
     
-</div>
+</main>
 
 
 <script src="js/meme-controller.js"></script>
