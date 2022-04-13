@@ -13,8 +13,8 @@
     <header class="main-header flex space-between">
         <div class="logo">Logo</div>
         <nav class="main-nav">
-            <a href="gallery" onclick="showGallery()" class="nav-item ">Gallery</a>
-            <a href="meme-editor" onclick="showMemeEditor()" class="nav-item">Memes</a>
+            <a href="#" onclick="onOpenGallery()" class="nav-item ">Gallery</a>
+            <a href="#" onclick="onOpenMemes()" class="nav-item">Memes</a>
         </nav>
     </header>
     
@@ -42,33 +42,32 @@
             <img src="meme-imgs/17.jpg" alt="">
             <img src="meme-imgs/18.jpg" alt=""> -->
 
-            <!-- <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div>
-            <div class="pita">csca</div> -->
+        
             
         </div>
     </section>
     
     
-    <section id="meme-editor" hidden>
-        fsafsa
+    <section id="editor" hidden class="meme-editor flex" >
+        
+        <div class="canvas-container">
+           
+            <canvas id="canvas" width="800" height="800"></canvas>
+        </div>
+
+        <div class="buttons-container">
+            <input onchange="onTextInput(this.value)" type="text" name="text" placeholder="Text goes here">
+        </div>
+
+        
     </section>
     
 </div>
 
 
-<script src="js/main.js"></script>
 <script src="js/meme-controller.js"></script>
+<script src="js/meme-service.js"></script>
+<script src="js/main.js"></script>
     
 </body>
 </html>

@@ -37,6 +37,33 @@ background-color: aqua;
     object-fit: cover; */
 }
 
+canvas {
+    background-color: rgb(248, 248, 248);
+    ;
+    
+}
+
+.meme-editor{
+    /* display:flex; */
+    height: 80vh;
+    gap: 20px;
+    padding:20px;
+    margin-inline-end: 40px;
+    margin-inline-start: 40px;
+}
+
+.canvas-container{
+    flex-basis: 50%;
+ 
+    border: solid white 4px
+}
+
+.buttons-container {
+    flex-basis: 50%;
+    border: solid yellow 4px
+
+}
+
 
 
 
