@@ -1,0 +1,61 @@
+* {
+    box-sizing: content-box;
+}
+
+body {
+    font-size: 1.5rem;
+    background-color: rgb(43, 45, 49)
+}
+
+.main-container {
+ 
+    background-color: rgb(70, 72, 77);
+}
+
+header  {
+background-color: aqua;
+}
+
+.main-gallery {
+   
+
+}
+
+.main-gallery .gallery-container {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 5px 5px
+
+}
+
+.gallery-container > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* width:200px;
+    height: 200px;
+    object-fit: cover; */
+}
+
+
+
+
+
+
+
+/* Helpers */
+
+.flex{
+    display:flex
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+
+.main-layout {
+    
+    padding-inline-start:1.8rem ;
+    padding-inline-start:1.8rem ;
+}
