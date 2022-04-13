@@ -13,9 +13,18 @@ function getMeme(id){
 }
 
 
-function setLineTxt(txt){
+function setLineTxt(txt){ ///// REMEMBER TO MAKE THE LINE CHANGABLE
     gMeme.lines[0].txt =txt
-    console.log('mem',gMeme);
+   
+}
+
+function setColor(color) { ///// REMEMBER TO MAKE THE LINE CHANGABLE
+    console.log('are you crazy?');
+    gMeme.lines[0].color = color
+}
+
+function changeFontSize(diff){
+    gMeme.lines[0].size += +diff
 }
 
 

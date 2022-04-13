@@ -16,11 +16,26 @@ function initCanvas(){
     // resizeCanvas()  
 }
 
+
+
+///////////// OnClickEvents /////////////////
 function onTextInput(txt){
     console.log('changed');
     setLineTxt(txt)
     renderMeme()
 }
+
+function onChangeColor(val){
+    console.log('val',val);
+    setColor(val)
+    renderMeme()
+}
+
+function onFontSizeChange(diff) {
+    changeFontSize(diff)
+    renderMeme()
+}
+
 
 
 
@@ -35,12 +50,12 @@ function drawText(x,y,txt,size,align,color) {
     gCtx.fillText(txt, x, y);
 }
 
-function drawRect(x,y,size,color){
-    console.log(size,color);
+function drawRect(x,y,size){
+
     gCtx.beginPath()
     gCtx.rect(x,y,gElCanvas.width-size,size)
     gCtx.lineWidth= 3
-    gCtx.strokeStyle = color
+    gCtx.strokeStyle = 'white'
     gCtx.stroke()
 }
 
@@ -54,14 +69,13 @@ function drawImgFromLocal(meme,idx =0){
         const {txt,size,align,color} = lines[idx]
    
         drawText(gElCanvas.width/2,size,txt,size,align,color)
-        drawRect(size/2,size/2,size,color)
+        drawRect(size/2,size/2,size)
         
     } 
 }
 
 function resizeCanvas(){
     //come back to fix responsivity to all pics. 
-
     // const elContainer = document.querySelector('.canvas-container')
     // gElCanvas.width = elContainer.offsetWidth -10
     // gElCanvas.height = elContainer.offsetHeight -10 
