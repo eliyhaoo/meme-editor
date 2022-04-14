@@ -13,18 +13,18 @@ function getMeme(id){
 
 
 function setLineTxt(txt){ ///// REMEMBER TO MAKE THE LINE CHANGABLE
-    gMeme.lines[gMeme.selectedLineIdx].txt =txt
-   
+    gMeme.lines[gMeme.selectedLineIdx].txt =txt  
 }
-
 function setColor(color) { ///// REMEMBER TO MAKE THE LINE CHANGABLE
-    console.log('are you crazy?');
     gMeme.lines[gMeme.selectedLineIdx].color = color
 }
-
 function changeFontSize(diff){
     gMeme.lines[gMeme.selectedLineIdx].size += +diff
 }
+function updateFont(font) {
+    gMeme.lines[gMeme.selectedLineIdx].font=font
+}
+
 
 function setSelectedLine(){ // come back here to make it better itp
     console.log('befpre',gMeme.selectedLineIdx);
@@ -52,6 +52,10 @@ function deleteLine(){
         }
 }
 
+function updateLineAlign(alignPos) {
+    gMeme.lines[gMeme.selectedLineIdx].align= alignPos
+}
+
 
 function addLine(){
     gMeme.lines[gMeme.selectedLineIdx].isSelected = false
@@ -60,6 +64,7 @@ function addLine(){
             size: 50,
             align: 'center',
             color: 'white',
+            font: 'impact',
             isSelected: true
     })
     gMeme.selectedLineIdx =gMeme.lines.length -1
@@ -77,15 +82,10 @@ function _createMeme(id){
             size: 50,
             align: 'center',
             color: 'white',
+            font: 'impact',
             isSelected: true
         },
-            {
-            txt: 'text goes here',
-            size: 50,
-            align: 'center',
-            color: 'white',
-            isSelected: false
-        },
+    
     ]
     }
 }

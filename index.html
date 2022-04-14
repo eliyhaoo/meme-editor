@@ -23,14 +23,18 @@
     </header>
 
     <div class="search-bar flex space-between align-center">
-        <form action="/" method="GET" class="search-form flex" >
-            <input class="search-input"type="search" name="search" placeholder="Enter Search Keywords" >
-            <button type="submit" class="search-btn"></button>
-            <img class="search-img" src="/css/LOGO/search.png" alt="search">
+        <form onsubmit="onSearch(event,this.value)"  class="search-form flex" >
+            <input list="search-words" class="search-input"type="search" name="search" placeholder="Enter Search Keywords" >
+            <button type="submit" class="search-btn">
+                <img class="search-img" src="/css/LOGO/search.png" alt="search">
+            </button>
+            <datalist id="search-words" class="keywords-container">
+                
+            </datalist>
         </form> 
           
-            <div class="words-container flex space-between"> <span>Word</span><span>Here</span><span>Comedy</span><span>LOL</span><span>Bisli</span> <button class="more-btn">more...</button></div>
- 
+            <div class="words-container flex space-between"> </div>
+ <span>Word</span>
     </div>
     
     <section class="main-gallery" id="gallery">
@@ -54,26 +58,27 @@
         </div>
 
         <div class="buttons-container">
-            <input onchange="onTextInput(this.value)" type="text" name="text"  placeholder="Text goes here">
+            <input class="text" onchange="onTextInput(this.value)" type="text" name="text"  placeholder="Text goes here">
 
-            <input onchange="onChangeColor(this.value)" type="color" class="color-btn" name="color" value="#FFFFFF" >
-            <input type="image" src="/css/icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onSwitchLines()" name="switch"/>
-            <input type="image" src="/css/icons/add.png" onclick="onAddLine()" name="add"/>
-            <input type="image" src="/css/icons/trash.png"onclick="onDeleteLine()" name="delete"/>
-            <input type="image" src="/css/icons/increase font - icon.png" onclick="onFontSizeChange('10')" class="font-size-up"/>
-            <input type="image" src="/css/icons/increase font - icon.png" onclick="onFontSizeChange('-10')" class="font-size-down"/>
-            <input type="image" src="/css/icons/align-to-left.png" onclick="onAlign('left')" />
-            <input type="image" src="/css/icons/center-text-alignment.png" onclick="onAlign('center')" />
-            <input type="image" src="/css/icons/align-to-right.png" onclick="onAlign('right')" />
-            <select name="text-font">
+            <input class="switch" type="image" src="/css/icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onSwitchLines()" name="switch"/>
+            <input class="add" type="image" src="/css/icons/add.png" onclick="onAddLine()" name="add"/>
+            <input class="delete" type="image" src="/css/icons/trash.png"onclick="onDeleteLine()" name="delete"/>
+            <input class="font-size-up" type="image" src="/css/icons/increase font - icon.png" onclick="onFontSizeChange('10')" />
+            <input class="font-size-down" type="image" src="/css/icons/decrease font - icon.png" onclick="onFontSizeChange('-10')" />
+            <input class="align-left" type="image" src="/css/icons/align-to-left.png" onclick="onAlign('right')" />
+            <input class="align-center" type="image" src="/css/icons/center-text-alignment.png" onclick="onAlign('center')" />
+            <input class="align-right" type="image" src="/css/icons/align-to-right.png" onclick="onAlign('left')" />
+            <select class="font-family" onchange="onFontChange(this.value)" name="text-font">
                 <option value="impact">Impact</option>
                 <option value="david">David</option>
-                <option value="ariel">Ariel</option>
+                <option value="arial">Arial</option>
             </select>
-
-
-
-            <a href="#" class="btn" onclick="onDownloadCanvas(this)" download="">Download</a>
+            <input class="text-color" onchange="onChangeColor(this.value)" type="color" class="color-btn" name="color" value="#FFFFFF" >
+            <div class="emojis-container">
+                emojies come here
+            </div>
+            <a href="#" class="btn download-btn" onclick="onDownloadCanvas(this)" download="">Download</a>
+            <a href="#" class="btn share-btn" onclick="onShare(this)" download="">Share</a>
             <!-- <button onclick="onMoveLine('1')" name="move-up">Switch</button> -->
             <!-- <button onclick="onMoveLine('-1')" name="move-down">Switch</button> -->
         </div>

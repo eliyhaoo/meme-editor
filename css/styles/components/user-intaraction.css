@@ -2,24 +2,128 @@
 .buttons-container {
     flex-basis: 50%;
     display: grid;
-    grid-template: repeat(4 1fr) 2fr 1fr / repeat(5 1fr);
-    border: solid yellow 4px;
+    grid-template-rows: 3fr 3fr 4fr 5fr 6fr 3fr; 
+    grid-template-columns: repeat(5 1fr);
+    grid-template-areas: 
+    "text-area text-area text-area text-area text-area"
+    ". switch add-line delete ."
+    "font-up font-down align-left align-center align-right"
+    "font-family font-family font-family . text-color"
+    "emojies emojies emojies emojies emojies"
+    "download download . share share";
+  
+    row-gap: 10px;
+    column-gap: 10px;
+    margin-top: 10px
+
+    /* border: solid yellow 4px; */
 
 }
 
-.buttons-container > input:not(:first-child):not(.color-btn) {
-    width:2.5rem;
-    height: 2.5rem;
+.buttons-container .btn {
+    align-self: center;
+    background-color: var(--clr1);
+    display:grid;
+    place-content: center;
+    border-radius: 0.4rem;
+    height: 3rem;
+    cursor: pointer;
+}
+.buttons-container .btn:hover {
+   color:black 
+}
+
+.buttons-container > input {
+   
+    height: 3rem;
     background-color: var(--clr2);
     border-radius: 0.4rem;
     padding: 0.2rem
 }
 
+/* .buttons-container > input:not(:first-child):not(.color-btn) {
+    width:2.5rem;
+    height: 2.5rem;
+    background-color: var(--clr2);
+    border-radius: 0.4rem;
+    padding: 0.2rem
+} */
+
+
+/* COME BACK HERE  */
 .buttons-container .color-btn {
     width:2.5rem;
     height: 2.5rem;
     padding: 0.2rem;
-    color:  blue;
+    background-color:  blue;
     /* background-image: url('/css/icons/paint-board-and-brush.png');
     background-repeat: no-repeat; */
+}
+
+.buttons-container .text {
+    grid-area: text-area;
+    width: 100%;
+    border: none;
+    align-self: center
+}
+.buttons-container .switch {
+    grid-area: switch;
+ 
+}
+.buttons-container .add {
+    grid-area: add-line;
+
+}
+.buttons-container .delete {
+    grid-area: delete;
+
+}
+.buttons-container .font-size-up {
+    grid-area: font-up;
+    align-self: flex-end;
+}
+.buttons-container .font-size-down {
+    grid-area: font-down;
+    align-self: flex-end;
+}
+.buttons-container .font-size-down {
+    grid-area: font-down;
+    align-self: flex-end;
+}
+.buttons-container .align-left {
+    grid-area: align-left;
+    align-self: flex-end;
+}
+.buttons-container .align-center {
+    grid-area: align-center;
+    align-self: flex-end;
+}
+.buttons-container .align-right {
+    grid-area: align-right;
+    align-self: flex-end;
+}
+.buttons-container .font-family {
+    grid-area: font-family;
+    align-self: flex-start;
+    height: 3rem;
+    background-color: var(--clr2);
+    border-radius: 0.4rem;
+    padding: 0.2rem;
+    border: none
+
+
+}
+.buttons-container .text-color {
+    grid-area: text-color;
+}
+.buttons-container .emojis-container {
+    grid-area: emojies;
+    width:100%;
+    background-color: var(--clr3);
+}
+.buttons-container .download-btn {
+    grid-area: download
+}
+.buttons-container .share-btn {
+    grid-area: share
 }

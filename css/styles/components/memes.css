@@ -2,9 +2,10 @@
 .meme-editor{
     /* display:flex; */
     gap: 20px;
-    padding-inline-end: 60px;
+    padding-inline-end: 40px;
     padding-inline-start: 30px;
     padding-bottom: 30px;
+    padding-top: 30px;
     background-color: var(--clr4);
 }
 

@@ -7,8 +7,7 @@
     padding-inline-end: 1.8rem;
     padding-inline-start: 1.8rem;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 13.5px 13.5px
-
+    gap: 13.5px 13.5px;
 }
 
 .gallery-container > * {

@@ -11,8 +11,57 @@ function renderMeme(id, idx) {
 function initCanvas() {
   gElCanvas = document.querySelector("#canvas");
   gCtx = gElCanvas.getContext("2d");
-  window.addEventListener("resize", resizeCanvas);
+  // addEventListeners()
+  
+
   // resizeCanvas()
+}
+
+function addEventListeners(){
+  addMouseEvents()
+  addTouchEvents()
+  window.addEventListener("resize", resizeCanvas);
+}
+
+function addMouseEvents(){
+gElCanvas.addEventListener('mousedown',onDown)
+gElCanvas.addEventListener('mousemove',onMove)
+gElCanvas.addEventListener('mouseup',onUp)
+}
+function addTouchEvents(){
+gElCanvas.addEventListener('touchstart',onDown)
+gElCanvas.addEventListener('touchmove',onMove)
+gElCanvas.addEventListener('touchend',onUp)
+}
+
+//////////Mouse & Touch Events ///////////////
+
+function onDown(ev){
+  const pos = getEvPos(ev)
+
+}
+function onMove(){
+
+}
+
+function onUp(){
+
+}
+
+function getEvPos(){
+  let pos = {
+    x: ev.offsetX,
+    y: ev.offsetY
+}
+if (gTouchEvs.includes(ev.type)) {
+    ev.preventDefault()
+    ev = ev.changedTouches[0]
+    pos = {
+        x: ev.pageX - ev.target.offsetLeft,
+        y: ev.pageY - ev.target.offsetTop
+    }
+}
+return pos
 }
 
 ///////////// OnClickEvents /////////////////
@@ -33,6 +82,17 @@ function onAddLine(){
 
 }
 
+function onAlign(alignPos){
+  updateLineAlign(alignPos)
+  renderMeme()
+}
+
+function onFontChange(font){
+  console.log('font',font);
+updateFont(font)
+renderMeme()
+}
+
 function onChangeColor(val) {
   console.log("val", val);
   setColor(val);
@@ -50,12 +110,12 @@ function onSwitchLines() {
 }
 
 //////////////\\\\\\\DRAW FUNCTINOS ///////////\\\\\\\\\\\\\
-function drawText(x, y, txt, size, align, color) {
+function drawText(x, y, txt, size, align, color,font) {
   gCtx.beginPath();
   gCtx.textBaseline = "middle";
   gCtx.textAlign = align;
   gCtx.fillStyle = color;
-  gCtx.font = `${size}px impact`;
+  gCtx.font = `${size}px ${font}`;
   gCtx.fillText(txt, x, y);
   gCtx.lineWidth = 2;
   gCtx.strokeStyle = "black";
@@ -83,15 +143,15 @@ function drawImgFromLocal(meme) {
     console.log("lines", lines);
 
     lines.map((line, idx) => {
-      const { txt, size, align, color, isSelected } = line;
+      const { txt, size, align, color, isSelected,font } = line;
       const height = idx === 0 ? size : idx === 1 ?gElCanvas.height - size : gElCanvas.height/2
 
-      drawText(gElCanvas.width / 2, height, txt, size, align, color);
+      drawText(gElCanvas.width / 2, height, txt, size, align, color,font);
       // drawText(gElCanvas.width/2,size,txt,size,align,color)
       //    drawRect(size / 2, size / 2, size);// first row
       //    drawRect(size / 2, gElCanvas.height -size*1.5 , size);
 
-      if (isSelected) {
+      if (isSelected) { //come back and change completely
           console.log('enter selected ');
         switch (meme.selectedLineIdx) {
           case 0:
