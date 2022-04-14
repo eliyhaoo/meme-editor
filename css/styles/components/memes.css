@@ -1,3 +1,13 @@
+
+.meme-editor{
+    /* display:flex; */
+    gap: 20px;
+    padding-inline-end: 60px;
+    padding-inline-start: 30px;
+    padding-bottom: 30px;
+    background-color: var(--clr4);
+}
+
 canvas {
     background-color: rgb(248, 248, 248);
 }
@@ -5,6 +15,6 @@ canvas {
 
 .canvas-container{
     flex-basis: 50%;
- 
     border: solid white 4px
+
 } 

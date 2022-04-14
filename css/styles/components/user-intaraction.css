@@ -1,15 +1,25 @@
-.meme-editor{
-    /* display:flex; */
-    height: 80vh;
-    gap: 20px;
-    padding:20px;
-    margin-inline-end: 40px;
-    margin-inline-start: 40px;
-}
-
 
 .buttons-container {
     flex-basis: 50%;
-    border: solid yellow 4px
+    display: grid;
+    grid-template: repeat(4 1fr) 2fr 1fr / repeat(5 1fr);
+    border: solid yellow 4px;
 
+}
+
+.buttons-container > input:not(:first-child):not(.color-btn) {
+    width:2.5rem;
+    height: 2.5rem;
+    background-color: var(--clr2);
+    border-radius: 0.4rem;
+    padding: 0.2rem
+}
+
+.buttons-container .color-btn {
+    width:2.5rem;
+    height: 2.5rem;
+    padding: 0.2rem;
+    color:  blue;
+    /* background-image: url('/css/icons/paint-board-and-brush.png');
+    background-repeat: no-repeat; */
 }

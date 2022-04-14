@@ -50,17 +50,29 @@
         
         <div class="canvas-container">
            
-            <canvas id="canvas" width="800" height="800"></canvas>
+            <canvas id="canvas" width="600" height="600"></canvas>
         </div>
 
         <div class="buttons-container">
-            <input onchange="onTextInput(this.value)" type="text" name="text" placeholder="Text goes here">
-            <input onchange="onChangeColor(this.value)" type="color" name="color" value="#FFFFFF">
-            <button onclick="onFontSizeChange('10')" class="font-size-up">+</button>
-            <button onclick="onFontSizeChange('-10')" class="font-size-down">-</button>
-            <button onclick="onSwitchLines()" name="switch">Switch</button>
-            <button onclick="onDeleteLine()" name="delete">Delete</button>
-            <button onclick="onAddLine()" name="add">Add</button>
+            <input onchange="onTextInput(this.value)" type="text" name="text"  placeholder="Text goes here">
+
+            <input onchange="onChangeColor(this.value)" type="color" class="color-btn" name="color" value="#FFFFFF" >
+            <input type="image" src="/css/icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onSwitchLines()" name="switch"/>
+            <input type="image" src="/css/icons/add.png" onclick="onAddLine()" name="add"/>
+            <input type="image" src="/css/icons/trash.png"onclick="onDeleteLine()" name="delete"/>
+            <input type="image" src="/css/icons/increase font - icon.png" onclick="onFontSizeChange('10')" class="font-size-up"/>
+            <input type="image" src="/css/icons/increase font - icon.png" onclick="onFontSizeChange('-10')" class="font-size-down"/>
+            <input type="image" src="/css/icons/align-to-left.png" onclick="onAlign('left')" />
+            <input type="image" src="/css/icons/center-text-alignment.png" onclick="onAlign('center')" />
+            <input type="image" src="/css/icons/align-to-right.png" onclick="onAlign('right')" />
+            <select name="text-font">
+                <option value="impact">Impact</option>
+                <option value="david">David</option>
+                <option value="ariel">Ariel</option>
+            </select>
+
+
+
             <a href="#" class="btn" onclick="onDownloadCanvas(this)" download="">Download</a>
             <!-- <button onclick="onMoveLine('1')" name="move-up">Switch</button> -->
             <!-- <button onclick="onMoveLine('-1')" name="move-down">Switch</button> -->
