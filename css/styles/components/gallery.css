@@ -1,7 +1,13 @@
+.main-gallery {
+    background-color: var(--clr4);
+}
+
 .main-gallery .gallery-container {
     display:grid;
+    padding-inline-end: 1.8rem;
+    padding-inline-start: 1.8rem;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 5px 5px
+    gap: 13.5px 13.5px
 
 }
 

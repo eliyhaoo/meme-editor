@@ -28,8 +28,7 @@ a:hover {
 
 
 .main-container {
- 
-    background-color: rgb(70, 72, 77);
-    border: lightgray 2px solid
+    font-size: 1.2rem;
+    border: var(--clr1) 2px solid
 }
 

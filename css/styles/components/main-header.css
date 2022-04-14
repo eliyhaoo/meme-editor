@@ -1,7 +1,5 @@
 header {
   background-color: var(--clr1);
-  
-  font-size: 1.7rem;
   padding-inline-end: 1rem;
   padding-inline-start: 1rem;
 }
@@ -10,6 +8,7 @@ header {
 .logo img {
   height: 3.5rem;
   object-fit: cover;
+  cursor: pointer;
 }
 .main-nav {
   align-self: center;
@@ -21,6 +20,7 @@ header {
  display:flex;
  align-items: center;
  justify-content:center;
-  
 }
+
+
 

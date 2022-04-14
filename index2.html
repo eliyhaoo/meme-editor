@@ -12,7 +12,7 @@
 <main class="main-container main-layout">
 
     <header class="main-header flex space-between ">
-        <div class="logo"><img src="/css/LOGO/LOGO.png" alt=""></div>
+        <a href="#" class="logo"><img src="/css/LOGO/LOGO.png" alt=""></a>
         <ul class="main-nav clean-list flex">
           <li><a href="#" onclick="onOpenGallery()" class="nav-item ">Gallery</a></li>
          
@@ -22,9 +22,15 @@
         </ul>
     </header>
 
-    <div class="search-bar flex space-between">
-        <input type="text" name="search" placeholder="SEARCH">
-        <div class="word-container">simple really it is YES Whatever...</div>
+    <div class="search-bar flex space-between align-center">
+        <form action="/" method="GET" class="search-form flex" >
+            <input class="search-input"type="search" name="search" placeholder="Enter Search Keywords" >
+            <button type="submit" class="search-btn"></button>
+            <img class="search-img" src="/css/LOGO/search.png" alt="search">
+        </form> 
+          
+            <div class="words-container flex space-between"> <span>Word</span><span>Here</span><span>Comedy</span><span>LOL</span><span>Bisli</span> <button class="more-btn">more...</button></div>
+ 
     </div>
     
     <section class="main-gallery" id="gallery">
@@ -32,11 +38,13 @@
                 <!-- pictures are rendered here -->
         </div>
 
-        <div class="info">
+    </section>
+    <section class="info flex align-center justify-center">
+        <div class="">
             picture and stuff come here
         </div>
     </section>
-    
+ 
     
     <section id="editor" hidden class="meme-editor" >
         
@@ -62,8 +70,9 @@
          
     </section>
 
-    <footer>
-        Footer here
+    <footer class="flex justifty-center column align-center " >
+        <a href="#" class="logo"><img src="/css/LOGO/LOGO.png" alt=""></a>
+        <small>All rights reserved 2022</small>
     </footer>
     
 </main>
