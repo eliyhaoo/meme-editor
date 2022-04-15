@@ -20,7 +20,6 @@ const gKeyWords = [
 
 function onInit() {
   _createImgs();
-  console.log('gImgs',gImgs);
   renderGallery();
   initCanvas();
   renderKeywords()
@@ -81,7 +80,7 @@ function onOpenMemes() {
 function onImgSelect(id) {
   closeGallery();
   openEditor();
-  renderMeme(id, 0);
+  renderMeme(id);
 }
 
 function openGallery() {

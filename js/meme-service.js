@@ -4,6 +4,7 @@ let gMeme
 let gIsSwitchGoingUp = false
 
 function getMeme(id){
+    const elCanvas = getCanvas()
     if(!gMeme){
         gMeme= _createMeme(id)
         console.log('sourcer',gMeme);
@@ -25,18 +26,40 @@ function updateFont(font) {
     gMeme.lines[gMeme.selectedLineIdx].font=font
 }
 
+function isLineClicked(clickedPos){
+    const elCanvas = getCanvas()
+    const {x,y}= clickedPos
+    const height = gMeme.lines[0].pos.y
+    const size = gMeme.lines[0].size
+    if (x >= 25 && x <=elCanvas.width-25&&y>=height&& y<= height+ size ){
+        return true 
+    } else return false
+}
+function setLineDrag(isDrag) {
+  gMeme.lines[0].isDrag = isDrag
+}
+
+function moveLine(dx,dy){
+    gMeme.lines[0].pos.x = dx
+    gMeme.lines[0].pos.y = dy
+}
+
 
 function setSelectedLine(){ // come back here to make it better itp
-    console.log('befpre',gMeme.selectedLineIdx);
-    gMeme.lines[gMeme.selectedLineIdx].isSelected= false
-    if ( gMeme.selectedLineIdx  === gMeme.lines.length-1) gIsSwitchGoingUp = true   
-    else if (gMeme.selectedLineIdx  === 0) gIsSwitchGoingUp = false
-    
-    if (gIsSwitchGoingUp)gMeme.selectedLineIdx--
+    if (gMeme.selectedLineIdx === gMeme.lines.length-1) gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx++
+
+  
+    // console.log('befpre',gMeme.selectedLineIdx);
+    // gMeme.lines[gMeme.selectedLineIdx].isSelected= false
+    // if ( gMeme.selectedLineIdx  === gMeme.lines.length-1) gIsSwitchGoingUp = true   
+    // else if (gMeme.selectedLineIdx  === 0) gIsSwitchGoingUp = false
     
-    gMeme.lines[gMeme.selectedLineIdx].isSelected= true   
-    console.log('after',gMeme.selectedLineIdx);
+    // if (gIsSwitchGoingUp)gMeme.selectedLineIdx--
+    // else gMeme.selectedLineIdx++
+    
+    // gMeme.lines[gMeme.selectedLineIdx].isSelected= true   
+    // console.log('after',gMeme.selectedLineIdx);
 }
 
 function deleteLine(){
@@ -57,22 +80,43 @@ function updateLineAlign(alignPos) {
 }
 
 
-function addLine(){
-    gMeme.lines[gMeme.selectedLineIdx].isSelected = false
+function addLine(elCanvas){
+    const height = gMeme.lines.length === 0 ? 50 : gMeme.lines.length === 1 ?elCanvas.height - 50 : elCanvas.height/2
+
+    // if (gMeme.lines.length === 0){
+
+    // }else if (line.length === 1){
+
+    // }else 
+
+    
     gMeme.lines.push({
-        txt: 'text goes here',
+            txt: 'text goes here',
             size: 50,
             align: 'center',
             color: 'white',
             font: 'impact',
-            isSelected: true
+            isDrag: false,
+            pos: {x:  elCanvas.width / 2 ,y:height},
     })
     gMeme.selectedLineIdx =gMeme.lines.length -1
+    // gMeme.lines[gMeme.selectedLineIdx].isSelected = false
+    // gMeme.lines.push({
+    //         txt: 'text goes here',
+    //         size: 50,
+    //         align: 'center',
+    //         color: 'white',
+    //         font: 'impact',
+    //         pos: {x = gElCanvas.width / 2 ,y=height},
+    //         isSelected: true
+    // })
+    // gMeme.selectedLineIdx =gMeme.lines.length -1
 }
 
 
 
 function _createMeme(id){
+    const elCanvas = getCanvas()
     return  {
         selectedImgId: id,
         selectedLineIdx:0,
@@ -83,7 +127,8 @@ function _createMeme(id){
             align: 'center',
             color: 'white',
             font: 'impact',
-            isSelected: true
+            isDrag: false,
+            pos: {x : elCanvas.width / 2 ,y:50},
         },
     
     ]

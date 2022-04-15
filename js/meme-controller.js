@@ -2,16 +2,19 @@
 
 let gElCanvas;
 let gCtx;
+let gStartPos
+const gTouchEvs =['touchstart', 'touchmove', 'touchend']
 
-function renderMeme(id, idx) {
+function renderMeme(id) {
   const meme = getMeme(id);
-  drawImgFromLocal(meme, idx);
+  console.log('meme', meme);
+  drawImgFromLocal(meme);
 }
 
 function initCanvas() {
   gElCanvas = document.querySelector("#canvas");
   gCtx = gElCanvas.getContext("2d");
-  // addEventListeners()
+  addEventListeners()
   
 
   // resizeCanvas()
@@ -38,14 +41,28 @@ gElCanvas.addEventListener('touchend',onUp)
 
 function onDown(ev){
   const pos = getEvPos(ev)
-
+  if (!isLineClicked(pos)) return
+  gStartPos = pos
+  setLineDrag(true)
+  
 }
-function onMove(){
+function onMove(ev){
+  const pos = getEvPos(ev)
+  if (isLineClicked(pos)) document.body.style.cursor  = 'all-scroll'
+  else document.body.style.cursor = 'default'
+  const meme = getMeme()
+  if (!meme.lines[0].isDrag) return
+  console.log('pos',pos);
+  const dx = pos.x - gStartPos.x
+  const dy = pos.y - gStartPos.y
+  moveLine(dx,dy)
+  renderMeme()
+  
 
 }
 
 function onUp(){
-
+setLineDrag(false)
 }
 
 function getEvPos(){
@@ -64,6 +81,10 @@ if (gTouchEvs.includes(ev.type)) {
 return pos
 }
 
+function getCanvas(){
+  return gElCanvas
+}
+
 ///////////// OnClickEvents /////////////////
 function onTextInput(txt) {
   console.log("changed");
@@ -77,7 +98,7 @@ function onDeleteLine(){
 }
 
 function onAddLine(){
-    addLine()
+    addLine(gElCanvas)
     renderMeme()
 
 }
@@ -128,46 +149,54 @@ function drawRect(x, y, size) {
   gradient.addColorStop("0.5", "blue");
   gradient.addColorStop("1.0", "orange");
   gCtx.beginPath();
-  gCtx.rect(x, y, gElCanvas.width - size, size);
+  gCtx.rect(x, y, gElCanvas.width - 50, size);
   gCtx.lineWidth = 3;
   gCtx.strokeStyle = gradient;
   gCtx.stroke();
 }
 
 function drawImgFromLocal(meme) {
+  console.log('meme', meme);
   const { lines, selectedImgId } = meme;
   let img = new Image();
   img.src = `/css/meme-imgs/${selectedImgId}.jpg`;
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-    console.log("lines", lines);
+    
 
     lines.map((line, idx) => {
-      const { txt, size, align, color, isSelected,font } = line;
-      const height = idx === 0 ? size : idx === 1 ?gElCanvas.height - size : gElCanvas.height/2
+      const { txt, size, align, color, isSelected,font ,pos} = line;
+      // const height = idx === 0 ? size : idx === 1 ?gElCanvas.height - size : gElCanvas.height/2
 
-      drawText(gElCanvas.width / 2, height, txt, size, align, color,font);
+      drawText(pos.x, pos.y, txt, size, align, color,font);
       // drawText(gElCanvas.width/2,size,txt,size,align,color)
       //    drawRect(size / 2, size / 2, size);// first row
       //    drawRect(size / 2, gElCanvas.height -size*1.5 , size);
 
-      if (isSelected) { //come back and change completely
-          console.log('enter selected ');
-        switch (meme.selectedLineIdx) {
-          case 0:
-            drawRect(size / 2, size / 2, size);
-            break;
-          case 1:
-            drawRect(size / 2, gElCanvas.height - size * 1.5, size);
-            break;
-          case 2:
-            console.log('enter caseselected ');
-
-            drawRect(size / 2, gElCanvas.height/2 -0.5*size, size);
-            break;
+     
+      
+      if (meme.selectedLineIdx === idx) { 
+       drawRect(25, pos.y - 0.5*size, size);
+        
         }
       }
-    });
+      // if (isSelected) { //come back and change completely
+      //     console.log('enter selected ');
+      //   switch (meme.selectedLineIdx) {
+      //     case 0:
+      //       drawRect(25, size / 2, size);
+      //       break;
+      //     case 1:
+      //       drawRect(25, gElCanvas.height - size * 1.5, size);
+      //       break;
+      //     case 2:
+      //       console.log('enter caseselected ');
+
+      //       drawRect(25, gElCanvas.height/2 -0.5*size, size);
+      //       break;
+        // }
+      // }
+    );
 
     // const {txt,size,align,color} = lines[idx]
 
@@ -183,8 +212,26 @@ function resizeCanvas() {
   // gElCanvas.height = elContainer.offsetHeight -10
 }
 
+
+
+
+function getEvPos(ev) {
+  let pos = {
+    x: ev.offsetX,
+    y: ev.offsetY
+}
+if (gTouchEvs.includes(ev.type)) {
+    ev.preventDefault()
+    ev = ev.changedTouches[0]
+    pos = {
+       x: ev.pageX - ev.target.offsetLeft,
+        y: ev.pageY - ev.target.offsetTop
+    }
+
+}
+return pos
+}
 function onDownloadCanvas(elLink){
-     
     const data = gElCanvas.toDataURL()
     elLink.hrf = data
     elLink.download = 'myCanvas.png'
