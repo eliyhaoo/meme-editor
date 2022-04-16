@@ -30,7 +30,7 @@ function renderGallery() {
   const imgs = getImgsForDisplay()
   const imgsSTR = imgs.map(
     (img) => `
-    <img onclick="onImgSelect('${img.id}')" src="/css/meme-imgs/${img.id}.jpg" alt="img-${img.id}">`
+    <img onclick="onImgSelect('${img.id}')" src="/css/memeImgs/${img.id}.jpg" alt="img-${img.id}">`
   );
   elContainer.innerHTML = imgsSTR.join("");
 }

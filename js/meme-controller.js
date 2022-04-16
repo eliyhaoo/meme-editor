@@ -159,7 +159,7 @@ function drawImgFromLocal(meme) {
   console.log('meme', meme);
   const { lines, selectedImgId } = meme;
   let img = new Image();
-  img.src = `/css/meme-imgs/${selectedImgId}.jpg`;
+  img.src = `/css/memeImgs/${selectedImgId}.jpg`;
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
     
