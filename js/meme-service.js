@@ -29,12 +29,24 @@ function updateFont(font) {
 function isLineClicked(clickedPos){
     const elCanvas = getCanvas()
     const {x,y}= clickedPos
-    const height = gMeme.lines[0].pos.y
-    const size = gMeme.lines[0].size
-    if (x >= 25 && x <=elCanvas.width-25&&y>=height&& y<= height+ size ){
-        return true 
-    } else return false
+
+    const clickedLineIdx = gMeme.lines.map((line,idx) => {
+        const height = line.pos.y
+        const size = line.size
+        if (x >= 25 && x <=elCanvas.width-25&&y>=height&& y<= height+ size ){
+            return idx
+
+            }
+        
+
+      })
 }
+    // const height = gMeme.lines[0].pos.y
+    // const size = gMeme.lines[0].size
+    // if (x >= 25 && x <=elCanvas.width-25&&y>=height&& y<= height+ size ){
+    //     return true 
+    // } else return false
+
 function setLineDrag(isDrag) {
   gMeme.lines[0].isDrag = isDrag
 }
@@ -130,6 +142,15 @@ function _createMeme(id){
             isDrag: false,
             pos: {x : elCanvas.width / 2 ,y:50},
         },
+        //     {
+        //     txt: 'text goes here',
+        //     size: 50,
+        //     align: 'center',
+        //     color: 'white',
+        //     font: 'impact',
+        //     isDrag: false,
+        //     pos: {x : elCanvas.width / 2 ,y:50},
+        // },
     
     ]
     }

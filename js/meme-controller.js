@@ -7,7 +7,6 @@ const gTouchEvs =['touchstart', 'touchmove', 'touchend']
 
 function renderMeme(id) {
   const meme = getMeme(id);
-  console.log('meme', meme);
   drawImgFromLocal(meme);
 }
 
@@ -52,10 +51,10 @@ function onMove(ev){
   else document.body.style.cursor = 'default'
   const meme = getMeme()
   if (!meme.lines[0].isDrag) return
-  console.log('pos',pos);
   const dx = pos.x - gStartPos.x
   const dy = pos.y - gStartPos.y
   moveLine(dx,dy)
+  meme.lines[0].pos = pos
   renderMeme()
   
 
@@ -159,7 +158,7 @@ function drawImgFromLocal(meme) {
   console.log('meme', meme);
   const { lines, selectedImgId } = meme;
   let img = new Image();
-  img.src = `/css/memeImgs/${selectedImgId}.jpg`;
+  img.src = `css/memeImgs/${selectedImgId}.jpg`;
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
     
